@@ -40,7 +40,7 @@ npm install
 
 ### 3. Environment Variables
 Copy the `.env` placeholder and fill in your actual values:
-- `DATABASE_URL`: Your PostgreSQL connection string.
+- `DATABASE_URL`" "
 - `NEXTAUTH_SECRET`: Generate one using `openssl rand -base64 32`.
 - `NEXTAUTH_URL`: `http://localhost:3000` (for local development).
 
