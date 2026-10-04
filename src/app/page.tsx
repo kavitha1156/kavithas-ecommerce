@@ -136,15 +136,47 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-[#fafbfc] text-[#222]">
       {/* ── 1. HERO SECTION (Summer Special Collection) ── */}
       <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#f8f9fc] via-[#f4f5f8] to-[#edf0f5] py-16 md:py-24 border-b border-border/40">
-        {/* Floating decorative elements matching mockup */}
-        <div className="absolute top-10 left-12 w-28 h-28 rounded-full border-2 border-primary/20 pointer-events-none" />
-        <div className="absolute bottom-12 left-1/3 w-16 h-16 rounded-full border-2 border-primary/25 pointer-events-none" />
-        <div className="absolute top-1/4 right-1/4 w-36 h-36 rounded-full border-2 border-primary/15 pointer-events-none" />
-        <div className="absolute top-1/2 left-8 grid grid-cols-4 gap-2 opacity-25 pointer-events-none">
-          {[...Array(16)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 rounded-full bg-foreground" />
-          ))}
-        </div>
+        {/* Floating circular product showcases matching modern e-commerce UI */}
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="hidden md:flex absolute top-12 left-10 items-center gap-3 bg-white/90 backdrop-blur-md p-2 pr-4 rounded-full shadow-lg border border-primary/20 z-20 pointer-events-auto group hover:scale-105 transition-transform"
+        >
+          <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary shadow-sm shrink-0">
+            <img
+              src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=300&q=80"
+              alt="Silk Bandana & Scarves"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+          <div>
+            <div className="text-[10px] font-bold uppercase text-primary tracking-wider">Summer Drop</div>
+            <div className="text-xs font-extrabold text-[#1a1f2c]">Silk Bandana</div>
+            <div className="text-[11px] font-bold text-muted-foreground">$14.99</div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="hidden lg:flex absolute bottom-12 left-[38%] items-center gap-3 bg-white/95 backdrop-blur-md p-2 pr-4 rounded-full shadow-xl border border-primary/30 z-20 pointer-events-auto group hover:scale-105 transition-transform"
+        >
+          <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary shadow-sm shrink-0">
+            <img
+              src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300&q=80"
+              alt="Classic Crewneck T-Shirt"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+          <div>
+            <div className="text-[10px] font-bold uppercase text-emerald-600 tracking-wider">🔥 20% Off</div>
+            <div className="text-xs font-extrabold text-[#1a1f2c]">Organic Tees</div>
+            <div className="text-[11px] font-bold text-muted-foreground">$24.00</div>
+          </div>
+        </motion.div>
+
+        {/* Large Decorative Backdrop Glow Circle */}
+        <div className="absolute top-1/2 right-10 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-primary/15 via-primary/5 to-transparent blur-3xl pointer-events-none" />
 
         {/* Big stylized watermark on right */}
         <span className="hidden xl:block absolute right-8 top-1/2 -translate-y-1/2 -rotate-90 text-8xl font-black tracking-widest text-muted/30 select-none pointer-events-none">
@@ -211,14 +243,18 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right Hero Model Image */}
+            {/* Right Hero Model Image with Circular Backdrop */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-5 flex justify-center relative"
+              className="lg:col-span-5 flex justify-center relative items-center"
             >
-              <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              {/* Circular Backdrop Ring */}
+              <div className="absolute w-[360px] h-[360px] sm:w-[420px] sm:h-[420px] rounded-full border-4 border-dashed border-primary/25 animate-[spin_60s_linear_infinite] pointer-events-none" />
+              <div className="absolute w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] rounded-full bg-gradient-to-br from-primary/20 via-orange-100/50 to-primary/5 pointer-events-none" />
+
+              <div className="relative w-full max-w-[390px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10">
                 <img
                   src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=900&q=85"
                   alt="Summer Collection Model"
@@ -226,6 +262,20 @@ export default function Home() {
                 />
                 <div className="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-full shadow-md text-xs font-bold text-primary flex items-center gap-1">
                   <Star className="h-3.5 w-3.5 fill-current text-primary" /> Top Rated
+                </div>
+
+                {/* Floating Bottom Badge */}
+                <div className="absolute bottom-4 left-4 right-4 bg-slate-950/80 backdrop-blur-md px-4 py-2.5 rounded-2xl text-white flex items-center justify-between border border-white/10">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-full overflow-hidden border border-primary">
+                      <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=150&q=80" alt="Polo" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-primary uppercase font-bold tracking-wider">Featured Style</div>
+                      <div className="text-xs font-bold">Classic Polo & Chinos</div>
+                    </div>
+                  </div>
+                  <span className="text-xs font-extrabold text-primary">$34.99</span>
                 </div>
               </div>
             </motion.div>
